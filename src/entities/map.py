@@ -16,21 +16,30 @@ mini_map = [
 
 
 class Map:
+    TILE_WIDTH = 100
+    TILE_HEIGHT = 100
+
     def __init__(self, game):
         self.game = game
         self.mini_map = mini_map
+        # dictionary with (x, y) coordinates as keys and tiles as values
         self.world_map = {}
         self.get_map()
+        for (posX, posY) in self.world_map:
+            print(posX, posY)
 
     def get_map(self):
-        for x, row in enumerate(self.mini_map):
-            for y, tile in enumerate(row):
+        for yIndex, row in enumerate(self.mini_map):
+            for xIndex, tile in enumerate(row):
                 if tile:
-                    self.world_map[(y, x)] = tile
-        print('world_map:')
-        print(self.world_map)
-        print('values')
+                    self.world_map[(xIndex, yIndex)] = tile
 
     def draw(self):
-        [pg.draw.rect(self.game.screen, 'darkgray', (pos[0] * 100,
-                      pos[1] * 100, 100, 100), 2) for pos in self.world_map]
+        [pg.draw.rect(self.game.screen,
+                      'darkgray',
+                      (posX * self.TILE_WIDTH,
+                       posY * self.TILE_HEIGHT,
+                       self.TILE_WIDTH,
+                       self.TILE_HEIGHT),
+                      2) for (posX,
+                              posY) in self.world_map]

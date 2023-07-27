@@ -1,4 +1,15 @@
 {
   "python.linting.flake8Enabled": true,
-  "python.linting.enabled": true
+  "python.linting.enabled": true,
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8"
+  },
+  "python.formatting.provider": "none",
+  "python.linting.lintOnSave": true,
+  "python.formatting.autopep8Path": "${workspaceFolder}/venv/bin/autopep8",
+  "editor.formatOnSave": true,
+  "autopep8.args": [
+    "--aggressive",
+    "--aggressive"
+  ]
 }

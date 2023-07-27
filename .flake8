@@ -1,0 +1,10 @@
+[flake8]
+max-line-length = 79
+exclude = .git, __pycache__, venv, *.pyc
+ignore = E203, W503
+select = E, W, F, C
+max-complexity = 10
+max-annotations-complexity = 4
+max-module-members = 10
+format = "%(path)s:%(row)d:%(col)d: %(code)s %(text)s"
+
